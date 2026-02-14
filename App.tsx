@@ -966,5 +966,8 @@ export const App: React.FC = () => {
                     <tbody className="divide-y divide-slate-50">
                       {updatedFideles.map(f => {
                         const isExpanded = selectedFideleId === f.id;
-                        return (
-                          <React.Fragment key={
+                      return (
+  <React.Fragment key={f.id}>
+    {/* ... ton contenu actuel (tr, etc.) ... */}
+  </React.Fragment>
+);
