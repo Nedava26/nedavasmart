@@ -1,8 +1,22 @@
 
 export type ReceiptPreference = 'Tofess 46' | 'Cerfa' | 'En attente' | 'Aucun';
-export type TransactionType = 'Virement' | 'Espece' | 'Cheque' | 'Direct Donateur';
-export type BankAccount = 'Beith Yossef' | 'Mishkan Yehuda' | 'Atrid' | 'Yahad Naale';
-export type DonationCategory = 'SHABAT' | 'FETES DE TICHRI' | 'FETES' | 'AUTRES';
+export type TransactionType = string;
+export type BankAccount = string;
+export type DonationCategory = string;
+
+export interface StatusConfig {
+  recentDays: number;
+  activeDays: number;
+}
+
+export interface AppConfig {
+  appName: string;
+  logo?: string; // Image en Base64
+  categories: DonationCategory[];
+  bankAccounts: BankAccount[];
+  paymentTypes: TransactionType[];
+  status: StatusConfig;
+}
 
 export interface Fidele {
   id: string;
@@ -27,7 +41,7 @@ export interface Pledge {
   fideleId: string;
   eventId: string;
   slotName: string;
-  officeName: string; // Identification unique par Nom + Office
+  officeName: string;
   amount: number;
   isOffered: boolean;
   category: DonationCategory;
@@ -61,4 +75,4 @@ export interface Event {
   slots?: EventSlot[];
 }
 
-export type ViewType = 'dashboard' | 'fideles' | 'encaissements' | 'evenements' | 'admin';
+export type ViewType = 'dashboard' | 'fidele' | 'paiement' | 'evenement' | 'parametre';
